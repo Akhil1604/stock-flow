@@ -1,0 +1,34 @@
+[project]
+name = "stockflow-api"
+version = "1.0.0"
+description = "Reliable inventory reservation and order orchestration API"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "uvicorn[standard]>=0.30,<1.0",
+  "pydantic-settings>=2.6,<3.0",
+  "sqlalchemy>=2.0,<3.0",
+  "psycopg[binary]>=3.2,<4.0",
+  "redis>=5.2,<6.0",
+  "kafka-python-ng>=2.2,<3.0",
+  "prometheus-client>=0.21,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9.0",
+  "httpx>=0.27,<1.0",
+  "ruff>=0.8,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008"]

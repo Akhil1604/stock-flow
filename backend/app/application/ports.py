@@ -1,0 +1,13 @@
+from typing import Protocol
+
+
+class CachePort(Protocol):
+    def get(self, key: str) -> str | None: ...
+
+    def set(self, key: str, value: str, ttl_seconds: int) -> None: ...
+
+    def increment(self, key: str, ttl_seconds: int) -> int: ...
+
+
+class EventPublisherPort(Protocol):
+    def publish(self, event_type: str, aggregate_id: str, payload: dict) -> None: ...
